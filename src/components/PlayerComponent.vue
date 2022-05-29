@@ -1,11 +1,19 @@
 <template>
-  <div class="player-component" :style="playerPosition">
+  <div class="player-component" tabindex="0" v-focus :style="playerPosition"
+  @keydown.right="$emit('pressRight')"
+  @keydown.left="$emit('pressLeft')"
+  @keydown.up="$emit('pressUp')"
+  @keydown.down="$emit('pressDown')"
+  >
   </div>
 </template>
 
 <script>
+import PlayerInterface from '../mixins/PlayerInterface'
+
 export default {
   name: 'PlayerComponent',
+  mixins: [PlayerInterface],
   props: {
     xPlayerPosition: {
       type: Number,

@@ -1,6 +1,11 @@
 <template>
   <div class="screen-component">
-    <PlayerComponent  :xPlayerPosition="xPlayerPosition" :yPlayerPosition="yPlayerPosition" v-on:keydown="pressRightRow()" />
+    <PlayerComponent :xPlayerPosition="xPlayerPosition" :yPlayerPosition="yPlayerPosition"
+    @pressRight="pressRight()"
+    @pressLeft="pressLeft()"
+    @pressUp="pressUp()"
+    @pressDown="pressDown()"
+    />
     <MainGroundComponentVue :height="20" />
   </div>
 </template>
@@ -15,15 +20,20 @@ export default {
     MainGroundComponentVue,
     PlayerComponent
   },
-  props: {
-    xPlayerPosition: {
-      type: Number,
-      required: true
-    },
-    yPlayerPosition: {
-      type: Number,
-      required: true
+  data () {
+    return {
+      xPlayerPosition: 10,
+      yPlayerPosition: 20,
+      requestFrame: undefined
     }
+  },
+  methods: {
+    mainCycle () {
+      this.request = requestAnimationFrame(this.mainCycle)
+    }
+  },
+  mounted () {
+    this.mainCycle()
   }
 }
 </script>
