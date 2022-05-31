@@ -21,4 +21,8 @@ export default {
 .game-screen-component
   height: 100%
   width: 100%
+
+  canvas
+    height: 100%
+    width: 100%
 </style>

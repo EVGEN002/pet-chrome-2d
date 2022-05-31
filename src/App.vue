@@ -1,20 +1,23 @@
 <template>
   <div class="app main">
-    <ScreenComponentVue />
+    <GameScreenComponent />
   </div>
 </template>
 
 <script>
-import ScreenComponentVue from './components/ScreenComponent.vue'
+import GameScreenComponent from './components/GameScreenComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    ScreenComponentVue
+    GameScreenComponent
   }
 }
 </script>
 
 <style lang="sass">
 @import "./assets/main.sass"
+.app
+  height: 100%
+  width: 100%
 </style>
